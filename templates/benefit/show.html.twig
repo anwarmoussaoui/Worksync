@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Benefit{% endblock %}
+
+{% block body %}
+    <h1>Benefit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ benefit.id }}</td>
+            </tr>
+            <tr>
+                <th>BenefitType</th>
+                <td>{{ benefit.benefitType }}</td>
+            </tr>
+            <tr>
+                <th>CoverageDetails</th>
+                <td>{{ benefit.coverageDetails }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="display: flex;">
+    <a class="btn btn-secondary" href="{{ path('app_benefit_index') }}">back to list</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-primary" href="{{ path('app_benefit_edit', {'id': benefit.id}) }}">edit</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ include('benefit/_delete_form.html.twig') }}
+{% endblock %}

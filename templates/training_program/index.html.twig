@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Training Programs{% endblock %}
+
+{% block body %}
+        <div style="display:flex;justify-content:space-between">
+    <h2>Training Programs</h2>
+    <a class="btn btn-secondary" href="{{ path('app_training_program_export') }}"><i class="ti ti-file"></i> Export</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Program Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for training_program in training_programs %}
+            <tr>
+                <td>{{ training_program.id }}</td>
+                <td>{{ training_program.programName }}</td>
+                <td>{{ training_program.description }}</td>
+                <td>{{ training_program.startDate ? training_program.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ training_program.endDate ? training_program.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_training_program_show', {'id': training_program.id}) }}"><i class="ti ti-eye"></i></a>
+                    <a href="{{ path('app_training_program_edit', {'id': training_program.id}) }}"><i class="ti ti-edit"></i></a>
+                    <a href="{{ path('app_training_program_delete', {'id': training_program.id}) }}"><i class="ti ti-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_training_program_new') }}">Create new</a>
+{% endblock %}

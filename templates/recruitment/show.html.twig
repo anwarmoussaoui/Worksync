@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recruitment{% endblock %}
+
+{% block body %}
+    <h1>Recruitment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ recruitment.id }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ recruitment.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary" href="{{ path('app_recruitment_index') }}">back to list</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-primary" href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">edit</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ include('recruitment/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Payroll{% endblock %}
+
+{% block body %}
+    <h1>Edit Payroll</h1>
+
+    {{ include('payroll/_form.html.twig', {'button_label': 'Update'}) }}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-secondary" href="{{ path('app_payroll_index') }}">back to list</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ include('payroll/_delete_form.html.twig') }}
+{% endblock %}

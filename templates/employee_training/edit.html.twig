@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit EmployeeTraining{% endblock %}
+
+{% block body %}
+    <h1>Edit EmployeeTraining</h1>
+
+    {{ include('employee_training/_form.html.twig', {'button_label': 'Update'}) }}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-secondary" href="{{ path('app_employee_training_index') }}">back to list</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ include('employee_training/_delete_form.html.twig') }}
+{% endblock %}

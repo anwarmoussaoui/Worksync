@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PerformanceReview{% endblock %}
+
+{% block body %}
+    <h1>Edit PerformanceReview</h1>
+
+    {{ include('performance_review/_form.html.twig', {'button_label': 'Update'}) }}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-secondary" href="{{ path('app_performance_review_index') }}">back to list</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ include('performance_review/_delete_form.html.twig') }}
+{% endblock %}

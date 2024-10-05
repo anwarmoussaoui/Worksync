@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TrainingProgram{% endblock %}
+
+{% block body %}
+    <h1>Create new TrainingProgram</h1>
+
+    {{ include('training_program/_form.html.twig') }}
+        <div style="display: flex;">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-secondary" href="{{ path('app_training_program_index') }}">back to list</a>
+{% endblock %}

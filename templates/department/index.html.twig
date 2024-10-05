@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Departments{% endblock %}
+
+{% block body %}
+    <div style="display:flex;justify-content:space-between">
+    <h2>Departments</h2>
+    <a class="btn btn-secondary" href="{{ path('app_department_export') }}"><i class="ti ti-file"></i> Export</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Department Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for department in departments %}
+            <tr>
+                <td>{{ department.id }}</td>
+                <td>{{ department.departmentName }}</td>
+                <td>
+                    <a href="{{ path('app_department_show', {'id': department.id}) }}"><i class="ti ti-eye"></i></a>
+                    <a href="{{ path('app_department_edit', {'id': department.id}) }}"><i class="ti ti-edit"></i></a>
+                    <a href="{{ path('app_department_delete', {'id': department.id}) }}"><i class="ti ti-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_department_new') }}">Create new</a>
+{% endblock %}

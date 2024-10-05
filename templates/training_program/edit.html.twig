@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Training Program{% endblock %}
+
+{% block body %}
+    <h1>Edit Training Program</h1>
+
+    {{ include('training_program/_form.html.twig', {'button_label': 'Update'}) }}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-secondary" href="{{ path('app_training_program_index') }}">back to list</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ include('training_program/_delete_form.html.twig') }}
+{% endblock %}

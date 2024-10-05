@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recruitments{% endblock %}
+
+{% block body %}
+        <div style="display:flex;justify-content:space-between">
+    <h2>Recruitments</h2>
+    <a class="btn btn-secondary" href="{{ path('app_recruitment_export') }}"><i class="ti ti-file"></i> Export</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Status</th>
+                <th>Employee</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recruitment in recruitments %}
+            <tr>
+                <td>{{ recruitment.id }}</td>
+                <td>{{ recruitment.status }}</td>
+                <td>{{ recruitment.employee.firstName }}  {{ recruitment.employee.lastName }}</td>
+                <td>
+                    <a href="{{ path('app_recruitment_show', {'id': recruitment.id}) }}"><i class="ti ti-eye"></i></a>
+                    <a href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}"><i class="ti ti-edit"></i></a>  
+                    <a href="{{ path('app_recruitment_delete', {'id': recruitment.id}) }}"><i class="ti ti-trash"></i></a>  
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_recruitment_new') }}">Create new</a>
+{% endblock %}

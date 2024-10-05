@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payrolls{% endblock %}
+
+{% block body %}
+        <div style="display:flex;justify-content:space-between">
+    <h2>Payrolls</h2>
+    <a class="btn btn-secondary" href="{{ path('app_payroll_export') }}"><i class="ti ti-file"></i> Export</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Employee</th>
+                <th>Salary</th>
+                <th>Bonus</th>
+                <th>Deductions</th>
+                <th>NetPay</th>
+                <th>PayrollDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for payroll in payrolls %}
+            <tr>
+                <td>{{ payroll.id }}</td>
+                <td>{{ payroll.employee.firstName }}  {{ payroll.employee.lastName }}</td>
+                <td>{{ payroll.salary }}</td>
+                <td>{{ payroll.bonus }}</td>
+                <td>{{ payroll.deductions }}</td>
+                <td>{{ payroll.netPay }}</td>
+                <td>{{ payroll.payrollDate ? payroll.payrollDate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_payroll_show', {'id': payroll.id}) }}"><i class="ti ti-eye"></i></a>
+                    <a href="{{ path('app_payroll_edit', {'id': payroll.id}) }}"><i class="ti ti-edit"></i></a>
+                    <a href="{{ path('app_payroll_delete', {'id': payroll.id}) }}"><i class="ti ti-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_payroll_new') }}">Create new</a>
+{% endblock %}

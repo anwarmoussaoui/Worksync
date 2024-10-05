@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PerformanceReview{% endblock %}
+
+{% block body %}
+    <h1>Create new PerformanceReview</h1>
+
+    {{ include('performance_review/_form.html.twig') }}
+        <div style="display: flex;">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-secondary" href="{{ path('app_performance_review_index') }}">back to list</a>
+{% endblock %}

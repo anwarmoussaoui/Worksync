@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Verification - WorkSync</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .header img {
+        max-width: 150px;
+    }
+    .content {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .footer {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="https://i.postimg.cc/kMzLdbKm/Asset-1gg.png" width="60px" height="53px" alt="WorkSync Logo">
+        <h3>WorkSync</h3>
+    </div>
+    <div class="content">
+        <p>Dear User,</p>
+        <p>Thank you for signing up with WorkSync! Please click the button below to verify your email address:</p>
+        <p><a href="{{ signedUrl|raw }}" style="background-color: #5D87FF; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">Verify Email Address</a></p>
+        <p>This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.</p>
+        <p>If you did not sign up for WorkSync, please disregard this email.</p>
+    </div>
+    <div class="footer">
+        <p>If you have any questions or need assistance, please contact our support team at support@worksync.com.</p>
+        <p>Thank you for choosing WorkSync!</p>
+        <p>Best regards,<br>The WorkSync Team</p>
+    </div>
+</div>
+</body>
+</html>

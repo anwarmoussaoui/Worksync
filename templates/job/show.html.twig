@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Job{% endblock %}
+
+{% block body %}
+    <h1>Job</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ job.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ job.Title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ job.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="display: flex;">
+    <a class="btn btn-secondary" href="{{ path('app_job_index') }}">back to list</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-primary" href="{{ path('app_job_edit', {'id': job.id}) }}">edit</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ include('job/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Benefit{% endblock %}
+
+{% block body %}
+    <h1>Create new Benefit</h1>
+
+    {{ include('benefit/_form.html.twig') }}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn btn-secondary" href="{{ path('app_benefit_index') }}">back to list</a>
+{% endblock %}

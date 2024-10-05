@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employees{% endblock %}
+
+{% block body %}
+    
+    <div style="display:flex;justify-content:space-between">
+    <h2>Employees</h2>
+    <a class="btn btn-secondary" href="{{ path('app_employee_export') }}"><i class="ti ti-file"></i> Export</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth Date</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Hire Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>{{ employee.dateOfBirth ? employee.dateOfBirth|date('Y-m-d') : '' }}</td>
+                <td>{{ employee.contactNumber }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.address }}</td>
+                <td>{{ employee.dateOfHire ? employee.dateOfHire|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_employee_show', {'id': employee.id}) }}"><i class="ti ti-eye"></i></a>
+                    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}"><i class="ti ti-edit"></i></a>
+                    <a href="{{ path('app_employee_delete', {'id': employee.id}) }}"><i class="ti ti-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ path('app_employee_new') }}">Create new</a>
+{% endblock %}

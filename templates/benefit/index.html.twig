@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Benefits{% endblock %}
+
+{% block body %}
+    <div style="display:flex;justify-content:space-between">
+    <h2>Benefits</h2>
+    <a class="btn btn-secondary" href="{{ path('app_benefit_export') }}"><i class="ti ti-file"></i> Export</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Employee</th>
+                <th>Benefit Type</th>
+                <th>Coverage Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for benefit in benefits %}
+            <tr>
+                <td>{{ benefit.id }}</td>
+                <td>{{ benefit.employee.firstName }}  {{ benefit.employee.lastName }}</td>
+                <td>{{ benefit.benefitType }}</td>
+                <td>{{ benefit.coverageDetails }}</td>
+                <td>
+                    <a href="{{ path('app_benefit_show', {'id': benefit.id}) }}"><i class="ti ti-eye"></i></a>
+                    <a href="{{ path('app_benefit_edit', {'id': benefit.id}) }}"><i class="ti ti-edit"></i></a>
+                    <a href="{{ path('app_benefit_delete', {'id': benefit.id}) }}"><i class="ti ti-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_benefit_new') }}">Create new</a>
+{% endblock %}

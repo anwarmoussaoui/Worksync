@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reports{% endblock %}
+
+{% block body %}
+    <h2>Reports</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Section</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Employees</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_employee_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Attendance</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_attendance_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Departments</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_department_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Jobs</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_job_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Payroll</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_payroll_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Performance Reviews</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_performance_review_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Recruitments</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_recruitment_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Training Programs</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_training_program_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Benefits</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_benefit_export')}}"><i class="ti ti-file"></i> Export</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

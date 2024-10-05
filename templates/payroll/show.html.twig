@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payroll
+{% endblock %}
+
+{% block body %}
+	<h1>Payroll</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ payroll.id }}</td>
+			</tr>
+			<tr>
+				<th>Salary</th>
+				<td>{{ payroll.salary }}</td>
+			</tr>
+			<tr>
+				<th>Bonus</th>
+				<td>{{ payroll.bonus }}</td>
+			</tr>
+			<tr>
+				<th>Deductions</th>
+				<td>{{ payroll.deductions }}</td>
+			</tr>
+			<tr>
+				<th>NetPay</th>
+				<td>{{ payroll.netPay }}</td>
+			</tr>
+			<tr>
+				<th>PayrollDate</th>
+				<td>{{ payroll.payrollDate ? payroll.payrollDate|date('Y-m-d') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div style="display: flex;">
+		<a class="btn btn-secondary" href="{{ path('app_payroll_index') }}">back to list</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a class="btn btn-primary" href="{{ path('app_payroll_edit', {'id': payroll.id}) }}">edit</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		{{ include('payroll/_delete_form.html.twig') }}
+	</div>
+	{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Performance Reviews{% endblock %}
+
+{% block body %}
+        <div style="display:flex;justify-content:space-between">
+    <h2>Performance Reviews</h2>
+    <a class="btn btn-secondary" href="{{ path('app_performance_review_export') }}"><i class="ti ti-file"></i> Export</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Employee</th>
+                <th>Reviewer</th>
+                <th>Review Date</th>
+                <th>Rating</th>
+                <th>Comment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for performance_review in performance_reviews %}
+            <tr>
+                <td>{{ performance_review.id }}</td>
+                <td>{{ performance_review.reviewDate ? performance_review.reviewDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ performance_review.employee.firstName }}  {{ performance_review.employee.lastName }}</td>
+                <td>{{ performance_review.reviewer.firstName }}  {{ performance_review.reviewer.lastName }}</td>
+                <td>{{ performance_review.rating }}</td>
+                <td>{{ performance_review.comment }}</td>
+                <td>
+                    <a href="{{ path('app_performance_review_show', {'id': performance_review.id}) }}"><i class="ti ti-eye"></i></a>
+                    <a href="{{ path('app_performance_review_edit', {'id': performance_review.id}) }}"><i class="ti ti-edit"></i></a>
+                    <a href="{{ path('app_performance_review_delete', {'id': performance_review.id}) }}"><i class="ti ti-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_performance_review_new') }}">Create new</a>
+{% endblock %}
